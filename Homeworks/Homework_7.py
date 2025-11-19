@@ -15,7 +15,7 @@ def create_table(conn):
     
 def insert_books(conn, name, author, publication_year, genre, number_of_pages, number_of_copies):
     conn.execute("""
-    INSERT INTO books (name, author, publication_year, genre, number_of_pages, number_of_copies)
+    INSERT OR IGNORE INTO books(name, author, publication_year, genre, number_of_pages, number_of_copies)
     VALUES (?, ?, ?, ?, ?, ?)""",
     (name, author, publication_year, genre, number_of_pages, number_of_copies))
     conn.commit()
