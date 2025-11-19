@@ -1,4 +1,4 @@
-from Lesson1_2 import Car
+from Месяц2.Lessons.Lesson1_2 import Car
 class Money:
     def __init__(self, amount):
         self.amount = amount
