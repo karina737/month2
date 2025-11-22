@@ -20,6 +20,13 @@ def insert_books(conn, name, author, publication_year, genre, number_of_pages, n
     (name, author, publication_year, genre, number_of_pages, number_of_copies))
     conn.commit()
 
+def get_all_books(conn):
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT * FROM books")
+    return cursor.fetchall()
+
+
 if __name__=='__main__':
     conn = sqlite3.connect('database.db')
     create_table(conn)
@@ -35,4 +42,10 @@ if __name__=='__main__':
     insert_books(conn, 'Белый пароход', 'Ч. Айтматов', 1970, 'Повесть', 418, 5)
     insert_books(conn, 'Материнское поле', 'Ч. Айтматов', 1963, 'Реализм', 326, 3)
 
+
+books = get_all_books(conn)
+for book in books:
+    print(book)
+
+conn.close()
 
